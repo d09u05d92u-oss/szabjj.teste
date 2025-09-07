@@ -1,19 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // === MENU HAMBURGUER (desktop + mobile) ===
-    const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".side-menu");
+    const toggleButton = document.querySelector(".menu-toggle"); // Renomeado para clareza
+    const sideMenu = document.querySelector(".side-menu");
 
-    if (toggle && menu) {
-        toggle.addEventListener("click", () => {
-            // Alterna a classe 'active' tanto no menu quanto no botão
-            menu.classList.toggle("active");
-            toggle.classList.toggle("active"); 
+    if (toggleButton && sideMenu) {
+        // Abre/Fecha o menu ao clicar no botão hamburguer
+        toggleButton.addEventListener("click", () => {
+            sideMenu.classList.toggle("active");
+            toggleButton.classList.toggle("active"); // ESSENCIAL: adiciona/remove a classe 'active' do BOTÃO
+        });
+
+        // Fecha o menu ao clicar fora dele (se estiver aberto)
+        document.addEventListener("click", (event) => {
+            // Verifica se o menu está aberto e se o clique foi fora do menu e fora do botão hamburguer
+            const isClickInsideMenu = sideMenu.contains(event.target);
+            const isClickOnToggleButton = toggleButton.contains(event.target);
+
+            if (sideMenu.classList.contains("active") && !isClickInsideMenu && !isClickOnToggleButton) {
+                sideMenu.classList.remove("active");
+                toggleButton.classList.remove("active"); // Remove a classe 'active' do BOTÃO
+            }
         });
     }
-
-    // Restante do seu JavaScript...
-    // ... (scripts para rolagem suave, slideshow, botão voltar ao topo, etc.)
 
     // === SCRIPT PARA ROLAGEM SUAVE NO BLOG ===
     document.querySelectorAll("a[href^='#']").forEach(anchor => {
