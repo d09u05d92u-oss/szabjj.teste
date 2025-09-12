@@ -5,14 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produtos – SZABJJ Nilópolis</title>
   <link rel="stylesheet" href="style.css">
-<!-- Favicons -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="favicon-48x48.png" type="image/png" sizes="48x48">
-<link rel="icon" href="favicon-64x64.png" type="image/png" sizes="64x64">
-<link rel="apple-touch-icon" href="favicon-180x180.png">
-<link rel="icon" href="favicon-192x192.png" type="image/png" sizes="192x192">
-<link rel="icon" href="favicon-512x512.png" type="image/png" sizes="512x512">
 </head>
 <body>
 
@@ -24,6 +16,7 @@
     <span class="hamburger-icon"></span>
     <span class="hamburger-icon"></span>
   </button>
+<a href="login.html" class="login-button">Login</a>
   </header>
 
   <nav id="side-menu" class="side-menu">
@@ -41,10 +34,12 @@
     <a href="matricula.html">Matrícula</a>
     <a href="apadrinhe.html">Apadrinhe um campeão</a>
     <a href="estudo.html">Estudo</a>
+    <a href="bolsista.html">Bolsistas</a>
   </nav>
 
   <main>
     <section>
+<h1 class="titulo-impacto">LOJA</h1>
 <h2 style="padding: 1.5rem 1rem;">Nossos Produtos</h2>
             <p style="padding: 0 1rem;">Adquira nossas camisas e kimonos para treinar com estilo!</p>
 
@@ -62,24 +57,26 @@
                 <div class="slide"><img src="https://res.cloudinary.com/ddozlstmp/image/upload/v1756224037/20250826_100237_yjdvcu.jpg" alt="Kimonos SZABJJ 3"></div>
             </div>
 
-            <div class="cta-box" style="background-color: #2c2c2c; padding: 2rem; border-radius: 8px; text-align: center; margin-top: 2rem;">
-                <h3 style="margin-top: 0; color: var(--cor-destaque-1);">Faça seu pedido agora!</h3>
-                <p>Selecione o produto abaixo para fazer seu pedido:</p>
-                <select id="product-select" style="margin-top: 10px; padding: 8px; border-radius: 5px;">
-                    <option value="kimono-infantil-trancado-290">Kimono Infantil Trançado - R$290,00</option>
-                    <option value="kimono-infantil-reforcado-250">Kimono Infantil Reforçado - R$250,00</option>
-                    <option value="camisa-90">Camisa Regata (sem manga) - R$90,00</option>
-                    <option value="camisa-95">Rash Guard (manga longa) - R$95,00</option>
-                    <option value="camisa-100">Rash Guard (manga longa) - R$100,00</option>
-                    <option value="kimono-360">Kimono Trançado - R$360,00 (cores: azul, preto, branco)</option>
-                    <option value="faixa-infantil">Faixas Infantis - R$50,00 (cores: branca, cinza, amarela, laranja, verde)</option>
-                    <option value="faixa-adulto">Faixas Adulto - R$50,00 (cores: branca, azul, roxa, marrom, preta)</option>
-                    <option value="squeeze-30">Squeeze de alumínio SZABJJ - R$30,00</option>
-                    <option value="kit-patch-40">Kit Patch kimono SZABJJ - R$40,00</option>
-                </select>
+           <div class="cta-box">
+    <h3 class="cta-title">Faça seu pedido agora!</h3>
+    <p>Selecione o produto abaixo para fazer seu pedido:</p>
+    <select id="product-select" class="product-selector">
+        <option value="kimono-infantil-trancado-290">Kimono Infantil Trançado - R$290,00</option>
+        <option value="kimono-infantil-reforcado-250">Kimono Infantil Reforçado - R$250,00</option>
+        <option value="camisa-90">Camisa Regata (sem manga) - R$90,00</option>
+        <option value="camisa-95">Rash Guard (manga longa) - R$95,00</option>
+        <option value="camisa-100">Rash Guard (manga longa) - R$100,00</option>
+        <option value="kimono-360">Kimono Trançado - R$360,00 (cores: azul, preto, branco)</option>
+        <option value="faixa-infantil">Faixas Infantis - R$50,00 (cores: branca, cinza, amarela, laranja, verde)</option>
+        <option value="faixa-adulto">Faixas Adulto - R$50,00 (cores: branca, azul, roxa, marrom, preta)</option>
+        <option value="squeeze-30">Squeeze de alumínio SZABJJ - R$30,00</option>
+        <option value="kit-patch-40">Kit Patch kimono SZABJJ - R$40,00</option>
+    </select>
+
                 <a id="order-button" href="https://api.whatsapp.com/send?phone=5521982481691&text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20Kimono%20Infantil%20Trançado%20-%20R%24290,00.%20Poderiam%20me%20ajudar%3F" target="_blank" class="whatsapp-link">
                     Fazer Pedido
                 </a>
+</div>
     </section>
   </main>
 

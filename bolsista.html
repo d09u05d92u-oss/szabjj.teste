@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bolsistas – SZABJJ Nilópolis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <img src="https://res.cloudinary.com/ddozlstmp/image/upload/v1755376968/lv_0_20250816174224_rlcqb5.gif" alt="Logo SZABJJ">
+    <p>A Arte Suave com Disciplina e Respeito</p>
+  <button class="menu-toggle">
+    <span class="hamburger-icon"></span>
+    <span class="hamburger-icon"></span>
+    <span class="hamburger-icon"></span>
+  </button>
+<a href="login.html" class="login-button">Login</a>
+  </header>
+
+  <nav id="side-menu" class="side-menu">
+    <a href="index.html">Início</a>
+    <a href="linhagem.html">Linhagem</a>
+    <a href="equipe.html">Equipe</a>
+    <a href="turmas.html">Turmas e Horários</a>
+    <a href="valores.html">Valores</a>
+    <a href="como-chegar.html">Como Chegar</a>
+    <a href="galeria.html">Galeria</a>
+    <a href="avaliacoes.html">Avaliações</a>
+    <a href="blog.html">Tatame em Palavras</a>
+    <a href="redes.html">Redes Sociais</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="matricula.html">Matrícula</a>
+    <a href="apadrinhe.html">Apadrinhe um campeão</a>
+    <a href="estudo.html">Estudo</a>
+    <a href="bolsista.html" class="active">Bolsistas</a>
+  </nav>
+
+  <main>
+    <section>
+        <h1 class="titulo-impacto">PROGRAMA DE BOLSISTAS</h1>
+        <h2 style="padding: 1.5rem 1rem;">Torne-se um Bolsista de Jiu-Jitsu e Transforme sua Paixão em Desenvolvimento!</h2>
+        <p style="padding: 0 1rem;">Você tem <b>disponibilidade de horários</b> e deseja dar continuidade ou iniciar sua jornada no <b>Jiu-Jitsu</b>? Esta é a sua chance de aprimorar suas habilidades, aprender com nossos instrutores experientes e se tornar parte ativa da nossa comunidade, tudo isso com condições especiais!</p>
+        <p style="padding: 0 1rem;">Oferecemos um programa de **bolsistas (ajudantes)** desenhado para apoiar sua dedicação ao esporte. Seja você um praticante experiente buscando aprofundar seus conhecimentos ou um iniciante ansioso para começar, nossos planos são flexíveis para se adequar à sua rotina.</p>
+
+        <h3 style="padding: 1.5rem 1rem;">Confira nossas opções de bolsas:</h3>
+        <ul style="padding: 0 2rem;">
+            <li><b>100% de bolsa:</b> Treine <b>5 vezes por semana</b>, incluindo aos <b>sábados pela manhã</b>. Dedicação total para o seu progresso.</li>
+            <li><b>50% de bolsa:</b> Dedique-se ao treino <b>4 vezes por semana</b>.</li>
+            <li><b>40% de bolsa:</b> Treine <b>3 vezes por semana</b>.</li>
+            <li><b>30% de bolsa:</b> Para quem pode se comprometer com <b>1 a 2 vezes por semana</b>.</li>
+        </ul>
+
+        <div class="cta-box">
+            <h3 class="cta-title">Participe do nosso programa de bolsistas!</h3>
+            <p>Selecione sua disponibilidade e nos envie uma mensagem para marcarmos um teste:</p>
+            <select id="disponibilidade-select" class="product-selector">
+                <option value="" disabled selected>Escolha sua disponibilidade</option>
+                <option value="5 vezes na semana e sábado de manhã - 100%">5 vezes na semana e sábado de manhã - 100%</option>
+                <option value="4 vezes na semana - 50%">4 vezes na semana - 50%</option>
+                <option value="3 vezes na semana - 40%">3 vezes na semana - 40%</option>
+                <option value="1 a duas vezes na semana - 30%">1 a duas vezes na semana - 30%</option>
+            </select>
+            <a id="whatsapp-link" href="#" target="_blank" class="whatsapp-link">
+                Enviar para o mestre
+            </a>
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Endereço: Antônio Félix, 427, Nilópolis | WhatsApp: 5521982481691</p>
+    <p>© 2025 SZABJJ. Todos os direitos reservados. | <a href="sitemap.xml">🗺️ Sitemap</a></p>
+  </footer>
+    <a href="https://api.whatsapp.com/send?phone=5521982481691&text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20as%20aulas%20de%20jiu-jitsu%20da%20equipe%20SZABJJ.%20Poderiam%20me%20ajudar?" target="_blank" class="whatsapp-button">
+        WhatsApp
+    </a>  
+
+  <script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const select = document.getElementById('disponibilidade-select');
+        const whatsappLink = document.getElementById('whatsapp-link');
+        const phoneNumber = '5521982481691';
+
+        select.addEventListener('change', function() {
+            const disponibilidade = select.value;
+            if (disponibilidade) {
+                const message = `Olá! Meu nome é (seu nome), tenho a disponibilidade ${disponibilidade} e gostaria de marcar meu teste para bolsista.`;
+                const encodedMessage = encodeURIComponent(message);
+                whatsappLink.href = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+            } else {
+                whatsappLink.href = '#';
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,72 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Início – SZABJJ Nilópolis</title>
-  <link rel="stylesheet" href="style.css">
 
-<!-- Favicons -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="favicon-48x48.png" type="image/png" sizes="48x48">
-<link rel="icon" href="favicon-64x64.png" type="image/png" sizes="64x64">
-<link rel="apple-touch-icon" href="favicon-180x180.png">
-<link rel="icon" href="favicon-192x192.png" type="image/png" sizes="192x192">
-<link rel="icon" href="favicon-512x512.png" type="image/png" sizes="512x512">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+
+    <title>Início – SZABJJ Nilópolis</title>
+
+    <meta name="description" content="Página inicial da Souza Jiu Jitsu Brasileiro em Nilópolis. Aprenda a arte suave com 40 anos de tradição, disciplina e respeito.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 </head>
-<body>
 
-  <header>
-    <img src="https://res.cloudinary.com/ddozlstmp/image/upload/v1755376968/lv_0_20250816174224_rlcqb5.gif" alt="Logo SZABJJ">
-    <p>A Arte Suave com Disciplina e Respeito</p>
-  <button class="menu-toggle">
-    <span class="hamburger-icon"></span>
-    <span class="hamburger-icon"></span>
-    <span class="hamburger-icon"></span>
-  </button>
-  </header>
+<body class="home-page">
 
-  <nav id="side-menu" class="side-menu">
-    <a href="index.html" class="active">Início</a>
-    <a href="linhagem.html">Linhagem</a>
-    <a href="equipe.html">Equipe</a>
-    <a href="turmas.html">Turmas e Horários</a>
-    <a href="valores.html">Valores</a>
-    <a href="como-chegar.html">Como Chegar</a>
-    <a href="galeria.html">Galeria</a>
-    <a href="avaliacoes.html">Avaliações</a>
-    <a href="blog.html">Tatame em Palavras</a>
-    <a href="redes.html">Redes Sociais</a>
-    <a href="produtos.html">Produtos</a>
-    <a href="matricula.html">Matrícula</a>
-    <a href="apadrinhe.html">Apadrinhe um campeão</a>
-    <a href="estudo.html">Estudo</a>
-  </nav>
-
-<main>
-    <section>
-        <h1>Início</h1>
-        <h2 class="titulo-impacto">CT Souza Jiu Jitsu Nilópolis</h2>
-        
-        <div class="iframe-container-centralizado">
-            <iframe src="https://www.youtube.com/embed/_iGMG7hG5eU" title="YouTube Short video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <header>
+        <img src="https://res.cloudinary.com/ddozlstmp/image/upload/v1755376968/lv_0_20250816174224_rlcqb5.gif" alt="Logo SZABJJ" width="250" height="250">
+        <p>A Arte Suave com Disciplina e Respeito</p>
+        <div class="header-buttons">
+            <button class="menu-toggle" aria-label="Abrir e fechar menu de navegação">
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+            </button>
+            <a href="login.html" class="login-button">Login</a>
         </div>
-        
-        <div class="taggbox" style="width:100%;height:100%;overflow:auto;" data-widget-id="296965" data-website="1"></div>
-        <script src="https://widget.taggbox.com/embed.min.js" type="text/javascript"></script>
-    </section>
-</main>
+    </header>
 
-  <footer>
-    <p>Endereço: Antônio Félix, 427, Nilópolis | WhatsApp: 5521982481691</p>
-    <p>© 2025 SZABJJ. Todos os direitos reservados. | <a href="sitemap.xml">🗺️ Sitemap</a></p>
-  </footer>
-    <a href="https://api.whatsapp.com/send?phone=5521982481691&text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20as%20aulas%20de%20jiu-jitsu%20da%20equipe%20SZABJJ.%20Poderiam%20me%20ajudar?" target="_blank" class="whatsapp-button">
+    <nav id="side-menu" class="side-menu">
+        <a href="index.html" class="active">Início</a>
+        <a href="linhagem.html">Linhagem</a>
+        <a href="equipe.html">Equipe</a>
+        <a href="turmas.html">Turmas e Horários</a>
+        <a href="valores.html">Valores</a>
+        <a href="como-chegar.html">Como Chegar</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="avaliacoes.html">Avaliações</a>
+        <a href="blog.html">Tatame em Palavras</a>
+        <a href="redes.html">Redes Sociais</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="matricula.html">Matrícula</a>
+        <a href="apadrinhe.html">Apadrinhe um campeão</a>
+        <a href="estudo.html">Estudo</a>
+        <a href="bolsista.html">Bolsistas</a>
+    </nav>
+
+    <main>
+        <section>
+            <h1 class="titulo-impacto">Souza Jiu Jitsu Brasileiro</h1>
+            <h2>40 anos de tradição Família introdutora do jiu-jitsu em Nilópolis</h2>
+
+            <div class="iframe-container-centralizado">
+                <iframe src="https://www.youtube.com/embed/_iGMG7hG5eU" title="YouTube Short video player" frameborder="0"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
+            </div>
+
+            <div class="taggbox" style="width:100%;height:100%;overflow:auto;" data-widget-id="296965" data-website="1"></div>
+            <script src="https://widget.taggbox.com/embed.min.js" type="text/javascript"></script>
+        </section>
+    </main>
+
+    <footer>
+        <p>Endereço: Antônio Félix, 427, Nilópolis | WhatsApp: 5521982481691</p>
+        <p>© 2025 SZABJJ. Todos os direitos reservados. | <a href="sitemap.xml">🗺️ Sitemap</a></p>
+    </footer>
+    <a href="https://api.whatsapp.com/send?phone=5521982481691&text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20as%20aulas%20de%20jiu-jitsu%20da%20equipe%20SZABJJ.%20Poderiam%20me%20ajudar?"
+        target="_blank" class="whatsapp-button" aria-label="Fale conosco via WhatsApp">
         WhatsApp
-    </a>  
+    </a>
 
-  <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

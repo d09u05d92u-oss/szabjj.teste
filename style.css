@@ -43,17 +43,18 @@ header p {
 
 /* Botão hambúrguer sempre visível */
 .menu-toggle {
-    /* ... outras propriedades ... */
     position: fixed;
-    /* Garante que esteja sempre visível */
     top: 20px;
     right: 20px;
-    z-index: 2000;
+    z-index: 3000;
+    /* Alto z-index para garantir que fique por cima */
     cursor: pointer;
     background: none;
     border: none;
     pointer-events: auto;
+    /* Garante que o botão seja clicável */
     padding: 5px;
+    /* As linhas abaixo são importantes para garantir que o X apareça corretamente */
 }
 
 .menu-toggle .hamburger-icon {
@@ -63,9 +64,10 @@ header p {
     background-color: var(--cor-destaque-1);
     margin: 4px 0;
     transition: all 0.3s ease-in-out;
+    /* O z-index aqui não é estritamente necessário se o .menu-toggle já está alto */
 }
 
-/* Transforma o ícone do menu em um X quando o botão tem a classe 'active' */
+/* Transforma o ícone do menu em um X */
 .menu-toggle.active .hamburger-icon:nth-child(2) {
     opacity: 0;
 }
@@ -82,21 +84,20 @@ header p {
 .side-menu {
     height: 100%;
     width: 0;
-    /* Começa fechado */
     position: fixed;
     z-index: 1000;
-    top: 0;
+    /* Um z-index alto, mas menor que o do .menu-toggle */
+    top: ;
     right: 0;
     background-color: var(--cor-secundaria);
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 10px;
     /* Espaço para o header */
 }
 
 .side-menu.active {
     width: 250px;
-    /* Abre o menu */
 }
 
 .side-menu a {
@@ -106,6 +107,7 @@ header p {
     color: var(--cor-texto);
     display: block;
     transition: 0.3s;
+    margin-bottom: 0;
 }
 
 .side-menu a:hover {
@@ -113,16 +115,17 @@ header p {
     background-color: var(--cor-principal);
 }
 
-/* Ajustes para main */
 main {
     margin: 0 auto;
     max-width: 1200px;
     padding: 0 1.5rem;
-    padding-top: 80px;
-    /* Espaço para o header fixo */
+    padding-top: 0px;
     padding-bottom: 80px;
-    /* Espaço para o footer fixo */
     box-sizing: border-box;
+    z-index: 10;
+    /* Um z-index menor que o do menu lateral */
+    position: relative;
+    /* Necessário para que o z-index funcione */
 }
 
 /* Estilos específicos para o conteúdo das páginas */
@@ -135,6 +138,11 @@ main {
     border-radius: 0;
     box-shadow: none;
     width: 100%;
+}
+
+/* Remove a margem superior do h1 dentro do main */
+main h1 {
+    margin-top: 0;
 }
 
 .tab-content.active {
@@ -162,6 +170,7 @@ main {
     font-family: 'Georgia', serif;
     color: var(--cor-destaque-1);
     font-size: 2.5rem;
+    margin-bottom: 0.8rem;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -227,6 +236,7 @@ tr:hover {
     height: 400px;
 }
 
+/* Estilos da seção redes sociais */
 .social-media {
     text-align: center;
     margin-top: 2rem;
@@ -236,12 +246,14 @@ tr:hover {
     gap: 15px;
 }
 
+/* Novo estilo para os links de redes sociais e grupos */
 #redes-sociais-content h2,
 #redes-sociais-content h3 {
     padding: 1.5rem 1rem;
     text-align: center;
 }
 
+/* Ajuste para não ter lista */
 #redes-sociais-content ul {
     list-style: none;
     padding: 0;
@@ -252,40 +264,41 @@ tr:hover {
     margin-bottom: 1rem;
 }
 
-/* ESTILIZAÇÃO DOS LINKS COM SOMBRA */
+/* Estilo base para links da seção de redes sociais */
 #redes-sociais-content a {
     font-family: 'Georgia', serif;
-    /* Fonte estilizada */
     font-size: 1.2rem;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s, text-shadow 0.3s;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    /* Sombra mais pronunciada */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+/* Cores específicas para cada link */
 .instagram-link {
     color: #E1306C;
+    /* Rosa do Instagram */
 }
 
 .tiktok-link {
     color: #FFFFFF;
-    /* Pode precisar de uma sombra diferente para contraste se o fundo for escuro */
+    /* Branco */
 }
 
 .youtube-link {
     color: #FF0000;
+    /* Vermelho vivo do YouTube */
 }
 
 .whatsapp-group-link {
     color: #25D366;
+    /* Verde do WhatsApp */
 }
 
 #redes-sociais-content a:hover {
     color: #ff6347;
-    /* Cor ao passar o mouse */
-    text-shadow: 2px 2px 8px rgba(255, 99, 71, 1);
-    /* Sombra mais intensa no hover */
+    /* Cor de hover para os links */
+    text-shadow: 1px 1px 5px rgba(255, 99, 71, 0.7);
 }
 
 .slider-container {
@@ -613,6 +626,20 @@ section h2 {
     padding-left: 10px;
 }
 
+/* Remove o border-left apenas para h2 dentro de sections na página inicial */
+.home-page section h2 {
+    border-left: none;
+    text-align: center;
+    font-size: 18px;
+    /* Remove o border-left */
+}
+
+/* Regra para remover o border-left da página inicial */
+#home-page .section h2 {
+    border-left: none;
+}
+
+
 section .meta {
     color: var(--texto-dim);
     font-size: 13px;
@@ -814,4 +841,179 @@ li {
         width: 500px;
         height: 889px;
     }
+}
+
+/* Estilos para a seção de CTA e seletor de produtos */
+.cta-box {
+    background-color: #2c2c2c;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.cta-title {
+    margin-top: 0;
+    color: var(--cor-destaque-1);
+}
+
+.product-selector {
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%;
+    /* Faz o seletor ocupar 100% da largura do contêiner pai */
+    max-width: 350px;
+    /* Define uma largura máxima para não ficar muito largo em telas grandes */
+    box-sizing: border-box;
+    /* Inclui padding e border na largura total */
+    font-size: 1rem;
+    /* Ajusta o tamanho da fonte */
+    background-color: var(--cor-secundaria);
+    /* Mantém um fundo escuro */
+    color: var(--cor-texto);
+    /* Cor do texto */
+    border: 1px solid var(--cor-principal);
+    /* Borda sutil */
+}
+
+/* Para que o seletor seja responsivo em telas menores */
+@media (max-width: 767px) {
+    .product-selector {
+        width: 100%;
+        /* Garante que ocupe toda a largura em telas pequenas */
+        max-width: none;
+        /* Remove a largura máxima em telas pequenas */
+    }
+}
+
+/* Container para tornar iframes responsivos (vídeos, mapas, etc.) */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    /* Proporção 16:9 */
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    /* Adiciona um espaço abaixo do container */
+}
+
+/* Estiliza o iframe dentro do container */
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Ajuste o espaço para o iframe da Vaquinha se ele estiver se comportando de forma diferente */
+/* Idealmente, adicione uma classe única ao div do iframe da vakinha, por exemplo: <div class="iframe-container vakinha-iframe"> */
+.iframe-container:nth-of-type(1) {
+    /* Isso seleciona o primeiro .iframe-container (assumindo que a vaquinha é o primeiro) */
+    margin-bottom: -20px;
+    /* Experimente com valores negativos para "puxar" para cima */
+}
+
+/* Se a vaquinha for o SEGUNDO iframe-container (depois do mapa), use: */
+/*
+.iframe-container:nth-of-type(2) {
+    margin-bottom: -20px;
+}
+*/
+
+/* E para os slides, você pode diminuir um pouco a margem superior, se necessário */
+.slideshow {
+    margin-top: 10px;
+    /* Diminua este valor conforme necessário */
+}
+
+/* Estilo específico para a "vaquinha" */
+.vakinha-container {
+    margin-bottom: 2rem;
+    /* Espaçamento entre a vaquinha e a galeria */
+}
+
+.vakinha-container iframe {
+    width: 100%;
+    /* Use 'height' com um valor fixo em pixels para que ela apareça completa. */
+    /* 500px é o valor que já estava no seu HTML, garantindo que ela caiba */
+    /* na maioria das telas sem barra de rolagem interna. */
+    height: 500px;
+    border: none;
+    /* remove a borda */
+}
+
+/* Garante que o contêiner principal se adapte à largura da tela */
+main {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Garante que o widget de avaliações não ultrapasse a largura do contêiner */
+.elfsight-app-89451b77-890b-44b3-8527-10ae3518561a {
+    max-width: 100%;
+    /* Impede que o widget transborde */
+}
+
+/* Correções de Acessibilidade (Contraste) */
+.brand small {
+    color: #cccccc;
+}
+
+.toc a:hover {
+    background: var(--vermelho);
+    color: #fff;
+}
+
+/* Otimizações de Desempenho do Google PageSpeed Insights */
+
+/* Otimiza a renderização de elementos principais */
+main {
+    will-change: transform, opacity;
+}
+
+/* Garante que o container do slider tenha uma altura definida para evitar CLS */
+.slider-container,
+#produtos .slider-container {
+    height: 400px;
+}
+
+/* Ajuda a prevenir o CLS em imagens e iframes */
+.slider-item img,
+.slider-item iframe {
+    aspect-ratio: attr(width) / attr(height);
+}
+
+/* Otimiza o carregamento de iframes para melhorar o LCP */
+.iframe-container-centralizado iframe {
+    content-visibility: auto;
+}
+
+/* Melhora a exibição de fontes personalizadas para evitar CLS */
+section {
+    font-display: swap;
+}
+
+/* Para o sidebar, em telas menores */
+@media (max-width: 920px) {
+    .sidebar {
+        will-change: transform;
+    }
+}
+/* Botão de Login */
+.login-button {
+    position: fixed;
+    top: 25px;
+    right: 70px; /* Ajusta a posição para ficar ao lado do botão de menu */
+    z-index: 3000;
+    font-weight: bold;
+    color: var(--cor-destaque-1); /* Cor vermelha da logo */
+    text-decoration: none; /* Remove o sublinhado do hyperlink */
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+.login-button:hover {
+    text-shadow: 0 0 10px var(--cor-destaque-1); /* Sombra ao passar o mouse */
 }
