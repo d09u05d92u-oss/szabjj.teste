@@ -426,10 +426,15 @@ footer {
 }
 
 #topBtn {
+    /* Torna o botão fixo na tela para que acompanhe a rolagem */
     position: fixed;
+    /* Define a posição */
     right: 20px;
     bottom: 80px;
-    z-index: 1001;
+    /* Garante que o botão fique acima de todos os elementos */
+    z-index: 1001; 
+    
+    /* Estilização (mantive suas configurações) */
     background: var(--cor-destaque-1);
     color: #fff;
     border: none;
@@ -439,6 +444,8 @@ footer {
     font-size: 20px;
     cursor: pointer;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    
+    /* **Essencial:** Esconde o botão por padrão */
     display: none;
 }
 
@@ -1017,3 +1024,22 @@ section {
 .login-button:hover {
     text-shadow: 0 0 10px var(--cor-destaque-1); /* Sombra ao passar o mouse */
 }
+/* Nova regra para o contêiner do blog */
+.blog-content {
+    margin-left: auto; /* Empurra o conteúdo do blog para a direita */
+    margin-right: 0;   /* Garante que não haja margem à direita */
+    max-width: 1300px; /* Defina uma largura para o conteúdo do blog, se quiser que ele não ocupe toda a largura */
+    padding-left: 1.5rem; /* Adiciona um pouco de padding à esquerda para não grudar na borda */
+    /* Se você quiser que o blog ocupe a mesma largura que o main, remova o max-width e ajuste o padding */
+    box-sizing: border-box;
+}
+
+/* Certifique-se que o main permite o conteúdo fluir para a direita, se necessário */
+main {
+    margin: 0; /* Remove a centralização do main, se estiver usando .blog-content */
+    padding: 0 1.5rem;
+    /* ... outras propriedades do main */
+}
+
+/* Se você quiser manter o main centralizado, mas o conteúdo do blog alinhado à direita dentro dele */
+/* Isso é um pouco mais complexo e pode precisar de flexbox no main */
