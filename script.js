@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.querySelector(".side-menu");
 
     if (toggle && menu) {
-        // Lógica de toggle: usa requestAnimationFrame para uma animação mais suave
+        // Lógica de toggle
         toggle.addEventListener("click", (event) => {
             event.stopPropagation();
             requestAnimationFrame(() => {
@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === SCRIPT PARA ROLAGEM SUAVE NO BLOG ===
-    // Uso de Intersection Observer para carregar suavemente apenas se o elemento estiver visível
+    // === SCRIPT PARA ROLAGEM SUAVE NO BLOG (ÂNCORAS) ===
+    // Uso de Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         target.scrollIntoView({ behavior: "smooth" });
                     }
                 });
-                observer.unobserve(anchor); // Remove o observador após a ativação
+                observer.unobserve(anchor);
             }
         });
     });
@@ -47,83 +47,22 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(anchor);
     });
 
-    // === SLIDESHOW (vários carrosséis na mesma página) ===
-    // Utiliza 'requestIdleCallback' para carregar a funcionalidade quando o navegador estiver ocioso
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-            loadSlideshows();
-        }, { timeout: 2000 }); // Executa em até 2 segundos, se possível
-    } else {
-        setTimeout(loadSlideshows, 1000); // Fallback para navegadores mais antigos
-    }
-
-    function loadSlideshows() {
-        const slideshows = document.querySelectorAll('.slideshow');
-        slideshows.forEach(slideshow => {
-            const slides = slideshow.querySelectorAll('.slide');
-            let slideIndex = 0;
-
-            const showSlides = () => {
-                slides.forEach((slide, index) => {
-                    slide.classList.toggle('active', index === slideIndex);
-                });
-            };
-
-            const plusSlides = (n) => {
-                slideIndex += n;
-                if (slideIndex >= slides.length) {
-                    slideIndex = 0;
-                }
-                if (slideIndex < 0) {
-                    slideIndex = slides.length - 1;
-                }
-                showSlides();
-            };
-
-            if (slides.length > 1) {
-                const navPrev = document.createElement('button');
-                navPrev.className = 'nav-btn nav-prev';
-                navPrev.innerHTML = '&#10094;';
-                navPrev.setAttribute('aria-label', 'Previous Slide'); // Acessibilidade
-                navPrev.addEventListener('click', () => plusSlides(-1));
-                slideshow.appendChild(navPrev);
-
-                const navNext = document.createElement('button');
-                navNext.className = 'nav-btn nav-next';
-                navNext.innerHTML = '&#10095;';
-                navNext.setAttribute('aria-label', 'Next Slide'); // Acessibilidade
-                navNext.addEventListener('click', () => plusSlides(1));
-                slideshow.appendChild(navNext);
-            }
-
-            showSlides();
-        });
-    }
-
-    // === Botão de voltar ao topo ===
+    // --- Botão de Voltar ao Topo: Lógica CORRIGIDA ---
     const topBtn = document.getElementById('topBtn');
+    
     if (topBtn) {
-        // Usa Intersection Observer para um monitoramento de rolagem mais eficiente
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+        const scrollThreshold = 280; // Altura de rolagem em pixels para o botão aparecer
+        
+        // 1. Lógica para mostrar/esconder o botão durante a rolagem (window.scrollY)
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > scrollThreshold) {
+                topBtn.style.display = 'block';
+            } else {
+                topBtn.style.display = 'none';
+            }
+        });
 
-        const topBtnObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // A visibilidade do botão é controlada pelo `window.scrollY`
-                // O IntersectionObserver é usado para observar a visibilidade de um elemento sentinel
-                if (window.scrollY > 280) {
-                    topBtn.style.display = 'block';
-                } else {
-                    topBtn.style.display = 'none';
-                }
-            });
-        }, observerOptions);
-
-        topBtnObserver.observe(document.body); // Observa a visibilidade do corpo da página
-
+        // 2. Lógica para rolar para o topo ao clicar no botão
         topBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -132,8 +71,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- FIM: Botão de Voltar ao Topo ---
+
+    // === SLIDESHOW (vários carrosséis na mesma página) ===
+    // Lógica de slideshow. Esta função deve ser declarada fora da verificação de carregamento.
+    // ... (O código da função loadSlideshows() está abaixo)
+
+    // === ATIVAÇÃO DO SLIDESHOW ===
+    // Utiliza 'requestIdleCallback'
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadSlideshows, { timeout: 2000 });
+    } else {
+        setTimeout(loadSlideshows, 1000);
+    }
+
     // Remove a classe "active" de todos os links do menu e adiciona ao link da página atual
-    // Essa lógica pode ser executada de forma assíncrona para não bloquear a thread principal
     setTimeout(() => {
         const currentPagePath = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll("#side-menu a").forEach(link => {
@@ -144,4 +96,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, 100);
-});
+}); // Fim do 'DOMContentLoaded'
+
+// === FUNÇÃO DE SLIDESHOW (DEVE FICAR FORA DA DOMContentLoaded PARA SER ACESSÍVEL) ===
+function loadSlideshows() {
+    const slideshows = document.querySelectorAll('.slideshow');
+    slideshows.forEach(slideshow => {
+        const slides = slideshow.querySelectorAll('.slide');
+        let slideIndex = 0;
+
+        const showSlides = () => {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === slideIndex);
+            });
+        };
+
+        const plusSlides = (n) => {
+            slideIndex += n;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            }
+            showSlides();
+        };
+
+        if (slides.length > 1) {
+            const navPrev = document.createElement('button');
+            navPrev.className = 'nav-btn nav-prev';
+            navPrev.innerHTML = '&#10094;';
+            navPrev.setAttribute('aria-label', 'Previous Slide');
+            navPrev.addEventListener('click', () => plusSlides(-1));
+            slideshow.appendChild(navPrev);
+
+            const navNext = document.createElement('button');
+            navNext.className = 'nav-btn nav-next';
+            navNext.innerHTML = '&#10095;';
+            navNext.setAttribute('aria-label', 'Next Slide');
+            navNext.addEventListener('click', () => plusSlides(1));
+            slideshow.appendChild(navNext);
+        }
+
+        showSlides();
+    });
+}
