@@ -1043,3 +1043,19 @@ main {
 
 /* Se você quiser manter o main centralizado, mas o conteúdo do blog alinhado à direita dentro dele */
 /* Isso é um pouco mais complexo e pode precisar de flexbox no main */
+
+/* Estilo específico para o link de benefícios infantis na aba Valores */
+.link-beneficios-infantil {
+    /* Usando a variável de Destaque Amarela da sua paleta */
+    color: var(--cor-destaque-2); 
+    font-weight: bold; /* Para dar mais destaque */
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+/* Mudar a cor ao passar o mouse (hover) */
+.link-beneficios-infantil:hover {
+    /* Usando a variável de Destaque Azul da sua paleta */
+    color: var(--cor-destaque-3); 
+    text-decoration: none;
+}
